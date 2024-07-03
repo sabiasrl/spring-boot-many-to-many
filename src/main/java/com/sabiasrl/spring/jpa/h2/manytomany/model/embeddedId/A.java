@@ -22,11 +22,11 @@ public class A {
   @EmbeddedId
   private AKey aKey;
 
+  @Column(name = "name")
+  private String name;
+
   @ToString.Exclude
   @EqualsAndHashCode.Exclude
   @ManyToMany(mappedBy = "aSet")
   private Set<B> bSet  = new HashSet<>();
-
-  @Column(name = "name")
-  private String name;
 }

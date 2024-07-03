@@ -18,6 +18,14 @@ public class B {
   @EmbeddedId
   private BKey bKey;
 
+  public B(BKey bKey, String name) {
+    this.bKey = bKey;
+    this.name = name;
+  }
+
+  @Column(name = "name")
+  private String name;
+
   @EqualsAndHashCode.Exclude
   @ToString.Exclude
   @ManyToMany(fetch = FetchType.EAGER, cascade = {
@@ -32,25 +40,4 @@ public class B {
           inverseJoinColumns = {@JoinColumn(name = "bKey.partitionKey"), @JoinColumn(name = "bKey.sortKey")}
   )
   private Set<A> aSet  = new HashSet<>();
-
-  @Column(name = "name")
-  private String name;
-  public B(BKey bKey, String name) {
-    this.bKey = bKey;
-    this.name = name;
-  }
-
-//  @ToString.Exclude
-//  @ManyToMany(fetch = FetchType.EAGER, cascade = {
-//          CascadeType.PERSIST,
-//          CascadeType.MERGE,
-//          CascadeType.DETACH,
-//          CascadeType.REFRESH
-//  })
-//  @OneToMany(mappedBy = "b")
-//  private Set<AB> abSet  = new HashSet<>();
-
-
-
-
 }

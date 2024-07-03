@@ -19,5 +19,4 @@ public class AKey implements Serializable {
 
   private String partitionKey;
   private String sortKey;
-
 }

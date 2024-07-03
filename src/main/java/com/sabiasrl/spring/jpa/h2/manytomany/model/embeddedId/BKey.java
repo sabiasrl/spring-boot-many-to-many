@@ -16,5 +16,4 @@ public class BKey implements Serializable {
   
   private String partitionKey;
   private String sortKey;
-
 }
