@@ -31,3 +31,7 @@ build/
 
 ### VS Code ###
 .vscode/
+
+### Local ###
+src/main/java/com/sabiasrl/spring/jpa/h2/manytomany/model/idClass
+src/test/java/com/sabiasrl/spring/jpa/h2/manytomany/it/ManyToManyIdClassIntegrationTest.java

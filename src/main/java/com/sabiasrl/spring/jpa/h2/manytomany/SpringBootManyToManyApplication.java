@@ -1,4 +1,4 @@
-package com.bezkoder.spring.hibernate.manytomany;
+package com.sabiasrl.spring.jpa.h2.manytomany;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
