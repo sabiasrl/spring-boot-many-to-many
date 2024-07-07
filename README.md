@@ -1,11 +1,7 @@
 # Spring Boot Many To Many example with Spring JPA, JPA, H2
 The example proves the implementation of a many-to-many JPA relation using EmbeddedId as composite private keys.
 
-## Run Spring Boot application
-```
-mvn clean install spring-boot:run
-```
-
+## JPA Mapping
 ```java
 
     @Entity 
@@ -47,5 +43,15 @@ mvn clean install spring-boot:run
                         @JoinColumn(name = "bKey.sortKey")}
         )
         private Set<A> aSet  = new HashSet<>();
+```
 
+## Integration test
+see [ManyToManyEmbeddedIdIntegrationTest](https://github.com/sabiasrl/spring-boot-many-to-many/blob/master/src/test/java/com/sabiasrl/spring/jpa/h2/manytomany/integration_tests/ManyToManyEmbeddedIdIntegrationTest.java)
+
+
+## Validate and Run Spring Boot application
+```shell
+mvn clean verify
+
+mvn clean install spring-boot:run
 ```
