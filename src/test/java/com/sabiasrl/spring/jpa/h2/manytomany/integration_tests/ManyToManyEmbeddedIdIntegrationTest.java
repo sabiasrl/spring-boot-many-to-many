@@ -13,8 +13,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
 @Transactional
-public class
-ManyToManyEmbeddedIdIntegrationTest {
+public class ManyToManyEmbeddedIdIntegrationTest {
 
     @Autowired
     private EntityManager entityManager;
