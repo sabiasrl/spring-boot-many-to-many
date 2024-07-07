@@ -1,4 +1,4 @@
-package com.sabiasrl.spring.jpa.h2.manytomany.it;
+package com.sabiasrl.spring.jpa.h2.manytomany.integration_tests;
 
 import com.sabiasrl.spring.jpa.h2.manytomany.model.embeddedId.A;
 import com.sabiasrl.spring.jpa.h2.manytomany.model.embeddedId.AKey;
@@ -7,7 +7,6 @@ import com.sabiasrl.spring.jpa.h2.manytomany.model.embeddedId.BKey;
 import jakarta.persistence.EntityManager;
 import jakarta.transaction.Transactional;
 import org.assertj.core.api.Assertions;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -20,7 +19,6 @@ ManyToManyEmbeddedIdIntegrationTest {
     @Autowired
     private EntityManager entityManager;
 
-    @Disabled
     @Test
     public void manyToManyTest() {
         var a11 = new A(new AKey("partition1", "sort1"), "a11");
@@ -35,12 +33,16 @@ ManyToManyEmbeddedIdIntegrationTest {
         entityManager.detach(b11);
         entityManager.detach(a11);
 
-        var b11Refreshed = entityManager.find(B.class, b11.getBKey());
+        var b11Refreshed = entityManager.find(B.class, new BKey("partition1", "sort1"));
 
+        // checks B11
+        Assertions.assertThat(b11Refreshed).isNotNull();
+        Assertions.assertThat(b11Refreshed.getName()).isEqualTo("b11");
         Assertions.assertThat(b11Refreshed.getASet()).isNotEmpty();
         Assertions.assertThat(b11Refreshed.getASet()).hasSize(1);
         Assertions.assertThat(b11Refreshed.getASet()).containsExactly(a11);
 
+        // checks A11
         var a11Refreshed = b11Refreshed.getASet().stream().findFirst().orElse(null);
         Assertions.assertThat(a11Refreshed).isNotNull();
         Assertions.assertThat(a11Refreshed.getName()).isEqualTo("a11");
