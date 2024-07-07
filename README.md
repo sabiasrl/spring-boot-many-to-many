@@ -45,6 +45,9 @@ The example proves the implementation of a many-to-many JPA relation using Embed
         private Set<A> aSet  = new HashSet<>();
 ```
 
+
+![h2 console](doc/h2-screenshot.png)
+
 ## Integration test
 see [ManyToManyEmbeddedIdIntegrationTest](https://github.com/sabiasrl/spring-boot-many-to-many/blob/master/src/test/java/com/sabiasrl/spring/jpa/h2/manytomany/integration_tests/ManyToManyEmbeddedIdIntegrationTest.java)
 
