@@ -41,11 +41,11 @@ public class ManyToManyEmbeddedIdIntegrationTest {
         Assertions.assertThat(b11Refreshed.getASet()).hasSize(1);
         Assertions.assertThat(b11Refreshed.getASet()).containsExactly(a11);
 
-        // checks A11
         var a11Refreshed = b11Refreshed.getASet().stream().findFirst().orElse(null);
+
+        // checks A11
         Assertions.assertThat(a11Refreshed).isNotNull();
         Assertions.assertThat(a11Refreshed.getName()).isEqualTo("a11");
-
         Assertions.assertThat(a11Refreshed.getBSet()).isNotEmpty();
         Assertions.assertThat(a11Refreshed.getBSet()).hasSize(1);
         Assertions.assertThat(a11Refreshed.getBSet()).containsExactly(b11Refreshed);
